@@ -1,3 +1,8 @@
+
+Project developed using only HTML5, CSS3 and jQuery. There are some functions which are using ajax requests. Also some API Connections such as ViaCEP. This one used for browse Postal Code and Calc Shipping Cost.
+
+Live project: http://vistomarketing.com.br/cart/
+
 Material Design for Bootstrap
 
 Version: MDB Free 4.5.0
