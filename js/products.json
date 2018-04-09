@@ -1,0 +1,6 @@
+[{ "id" : "1", "categoria" : "1", "imagem" : "img/products/galaxy-s8.jpg", "nome" : "Galaxy S8", "fabricante" : "Samsung", "preco" : 2399.00, "descricao" : "Descrição Galaxy S8" },
+{ "id" : "2", "categoria" : "1", "imagem" : "img/products/iphone-7.jpg", "nome" : "iPhone 7", "fabricante" : "Apple", "preco" : 2599.00, "descricao" : "Descrição iPhone7" },
+{ "id" : "3", "categoria" : "1", "imagem" : "img/products/iphone-x.jpg", "nome" : "iPhone X", "fabricante" : "Apple", "preco" : 3399.00, "descricao" : "Descrição iPhone X" },
+{ "id" : "4", "categoria" : "1", "imagem" : "img/products/samsung-note-8.jpg", "nome" : "Samsung Note 8", "fabricante" : "Samsung", "preco" : 2999.00, "descricao" : "Descrição Samsung Note 8" },
+{ "id" : "5", "categoria" : "1", "imagem" : "img/products/iphone-8.jpg", "nome" : "iPhone 8", "fabricante" : "Apple", "preco" : 2499.00, "descricao" : "Descrição iPhone 8" },
+{ "id" : "6", "categoria" : "1", "imagem" : "img/products/samsung-s7-edge.jpg", "nome" : "Samsung S7 Edge", "fabricante" : "Samsung", "preco" : 1699.00, "descricao" : "Descrição Samsung S7 Edge" }]

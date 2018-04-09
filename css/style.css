@@ -1,0 +1,169 @@
+/* Your custom styles */
+*{
+    margin:0;
+    padding:0;
+}
+
+body {
+     background-color: #e6e6e6;
+     background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+    /* This is mostly intended for prototyping;
+     please download the pattern and re-host for production environments. Thank you! */
+}
+
+body, html{
+    height: 100%;
+}
+
+.validator
+{
+    text-align: center;
+    display: block;
+}
+
+.validator img
+{
+    width: 100px;
+    height: auto;
+}
+
+.modal {
+    z-index: 998;
+}
+
+.modal-backdrop {
+    z-index: 997;
+}
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 995;
+}
+
+#loading
+{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:999;
+    background-color:#000;
+    width:100%;
+    opacity: .80;
+    filter: alpha(opacity=80);
+    text-align: center;
+    height: 100%;
+    min-height: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+
+
+ .modal-title {
+     font-weight: bold;
+     text-transform: uppercase;
+     font-size: 95%;
+     color: #212529;
+}
+}
+ #cart h3 {
+     font-weight: 500;
+     font-size: 120%;
+     text-transform: uppercase;
+     padding: 0;
+     margin: 0;
+}
+ .content {
+     clear: both;
+     display: block;
+     position: relative;
+     padding-top: 90px;
+}
+ .navbar-brand, .sidebar h2, .card-title, .calc-frete h3, .modal-title {
+     font-family: 'Fugaz One', cursive;
+}
+ .sidebar h2 {
+     font-weight: bold;
+     text-transform: uppercase;
+     font-size: 1em;
+     padding: 15px 0;
+}
+ .calc-frete h3 {
+     margin-bottom: 15px !important;
+}
+ .built-with {
+     color: #eee;
+     text-align: center;
+}
+ .built-with a {
+     color: #fff;
+     font-weight: bold;
+}
+ .cep-error {
+     display: block;
+     margin: 20px 0;
+}
+ a.btn {
+     font-weight: 500;
+}
+ .table>tbody>tr>td, .table>tfoot>tr>td{
+     vertical-align: middle;
+}
+ @media screen and (max-width: 600px) {
+    #cart tbody td .form-control{
+         width:20%;
+         display: inline !important;
+    }
+     .actions .btn{
+         width:36%;
+         margin:1.5em 0;
+    }
+     .actions .btn-info{
+         float:left;
+    }
+     .actions .btn-danger{
+         float:right;
+    }
+     .form-group {
+         width: 100%;
+         margin: 5px 0;
+    }
+    .calc-shipping {
+         margin: 10px 0 !important;
+    }
+    #cart thead {
+         display: none;
+    }
+    #cart tbody td {
+         display: block;
+         padding: .6rem;
+         min-width:320px;
+    }
+    #cart tbody td:before {
+         content: attr(data-th);
+         font-weight: bold;
+         display: inline-block;
+         width: 8rem;
+    }
+    #cart tbody .actions:before {
+         width: 0rem !important;
+    }
+    #cart tfoot td{
+        display:block;
+    }
+    #cart tfoot td .btn{
+        display:block;
+    }
+    #cep {
+        margin: 15px 0;
+        clear: both;
+        display: block;
+    }
+}

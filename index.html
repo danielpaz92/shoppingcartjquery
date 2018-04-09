@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Shopping Cart using Ajax and jQuery</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- CUSTOM GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
+</head>
+<body>
+    <div id="loading">
+        <img src="img/svg/loading.svg" alt="Carregando" />
+    </div>
+    <!-- Start your project here-->
+     <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Shopping Cart using Ajax and jQuery</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" data-toggle="modal" data-target="#my-cart">
+                <i class="fa fa-shopping-cart"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Page Content -->
+    <div class="content container">
+      <div class="row">
+        <div class="col-lg-3 sidebar">
+          <h2>Categorias</h2>
+          <div class="list-group">
+            <a href="#" class="list-group-item active">Smartphone</a>
+            <a href="#" class="list-group-item">Tablet</a>
+            <a href="#" class="list-group-item">Gadget</a>
+          </div>
+          <h2>Filtrar por Fabricante</h2>
+          <!-- Filled-in checkbox -->
+          <form id="filterProducts">
+              <div class="form-check">
+                <input class="form-check-input filled-in" type="checkbox" name="brand" value="Apple" id="apple" />
+                <label class="form-check-label" for="apple">
+                    Apple
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input filled-in" type="checkbox" name="brand" value="Samsung" id="samsung" />
+                <label class="form-check-label" for="samsung">
+                    Samsung
+                </label>
+              </div>
+              <input type="submit" class="btn btn-sm btn-primary" value="Filtrar" />
+        </form>
+        </div>
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-9">
+          <div class="row">
+            <div class="col-md-12">
+            <div id="success-message" class="alert alert-success alert-dismissible fade show" role="alert">
+              <span class="message"></span>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4 d-none d-sm-block">
+              <img src="img/banner-desk.jpg" class="z-depth-1" alt="Seu novo smartphone com as melhores condições de pagamento" />
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4 d-block d-sm-none banner">
+              <img src="img/banner-mobile.jpg" class="z-depth-1" alt="Seu novo smartphone com as melhores condições de pagamento" />
+            </div>
+          </div>
+          <div class="row" id="products">
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.col-lg-9 -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container -->
+    <!-- Modal -->
+    <div class="modal fade" id="my-cart" tabindex="-1" role="dialog" aria-labelledby="cartLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartLabel">Carrinho de Compras</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  <table id="cart" class="table">
+            <thead>
+            <tr>
+              <th>Produto</th>
+              <th style="width:30%"></th>
+              <th style="width:10%">Preço</th>
+              <th style="width:8%">Quantidade</th>
+              <th style="width:22%" class="text-center">Subtotal</th>
+              <th style="width:30%">Ações</th>
+            </tr>
+          </thead>
+          <tbody class="product-items">
+          </tbody>
+            <tfoot>
+            <tr>
+              <td colspan="3">
+                <div class="calc-frete">
+                  <h3>Calcular Frete:</h3>
+                  <!-- Default form inline -->
+                  <form id="calc-shipping" class="form-inline">
+                      <div class="form-group">
+                          <label for="cep">Informe seu CEP:</label>
+                          <input type="text" id="cep" class="form-control mx-sm-3" aria-describedby="cep" />
+                          <a id="btn-calc-frete" class="btn btn-md btn-primary" href="#">Calcular Frete</a>                 
+                      </div>
+                  </form>
+                  <!-- Default form inline -->
+                  <div class="alert alert-danger alert-dismissible fade show cep-error" role="alert">
+                    <strong>Erro!</strong> CEP inválido ou não encontrado!
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                 </div>
+                </div> 
+              </td>
+              <td colspan="3" class="text-right">
+                <strong>Subtotal: </strong>R$<span id="sub-total-products" class="sub-total-final-price"></span><br>
+                <strong>Frete: </strong>R$<span class="shipping-price first"></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="6" class="text-right">
+                <span class="total">Total: <strong>R$<span class="total-price"></span></strong></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3"><a href="#" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-angle-left"></i> Continuar comprando</a></td>
+              <td colspan="1" class="d-none d-sm-block"></td>
+              <td colspan="2"><a href="#" class="btn btn-success btn-block">Finalizar Compra <i class="fa fa-angle-right"></i></a></td>
+            </tr>
+            </tfoot>
+        </table> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; 2018 - Developed by Daniel Paz</p>
+          <hr>
+          <a class="validator" href="https://html5.validator.nu/?doc=http%3A%2F%2Fvistomarketing.com.br%2Fcart%2F">
+<img src="https://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png" width="165" height="64" alt="HTML5 Powered with CSS3 / Styling, and Semantics" title="HTML5 Powered with CSS3 / Styling, and Semantics">
+</a>
+        
+      </div>
+      <!-- /.container -->
+    </footer>
+    <!-- /Start your project here-->
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script src="js/mdb.min.js"></script>
+    <!-- APP JS -->
+    <script src="js/app.js"></script>
+    <!-- jQuery Price Format -->
+    <script src="js/jquery.priceformat.min.js"></script>
+</body>
+</html>
